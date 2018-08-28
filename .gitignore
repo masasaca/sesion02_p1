@@ -1,23 +1,84 @@
-# Compiled class file
-*.class
+package com.isil.sesion2_p1;
 
-# Log file
-*.log
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-# BlueJ files
-*.ctxt
+public class MainActivity extends AppCompatActivity {
+  //PASOS
+  //1. Declarar variables
+  //2. Asignar varibalbes del diseño XML usando findViewById y R.iD en la funcion "onCreate"
+  //3. Obtener los valroes de las cajas de texto y asignarlas en variables de tipo String.
+  //en la funcion "Calcular" porque necesitamos que se ejecute esta asigancion al momento
+  //de dar click en el boton.
+  //4. Programar la fuincionalidad usando un metodo para el boton.
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+  //Declaracion de variables
+  EditText caja1, caja2, caja3;
+  TextView resultado;
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+  double n1 = 0;
+  double n2 = 0;
+  double n3 = 0;
+  double promedio = 0;
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    //Usaremos R para referirnos a los recursos de nuestro proyecto
+    //Para referirnos al Id usaremos R.id
+
+    caja1 = findViewById(R.id.edtN1);
+    caja2 = findViewById(R.id.edtN2);
+    caja3 = findViewById(R.id.edtN3);
+
+    resultado = findViewById(R.id.txtRes);
+  }
+
+  //Forma estandar de programar una funcion para un boton
+  /*
+      public voud Calcular(View v){
+          Intrucciones ...
+      }
+   */
+
+  public void Calcular(View v) {
+    Log.d("Mensaje", "Hola Consola");
+    //Todas las instrucciones dentro de esta funcion se ejecutaran al da click
+    //al botón "Calcular"
+
+    /*METODO LARGO DE PROCEDIMIENTO*/
+
+    String contenidoCaja1 = caja1.getText().toString();
+    String contenidoCaja2 = caja2.getText().toString();
+    String contenidoCaja3 = caja3.getText().toString();
+
+    n1 = Double.parseDouble(contenidoCaja1);
+    n2 = Double.parseDouble(contenidoCaja2);
+    n3 = Double.parseDouble(contenidoCaja3);
+
+    promedio = (n1 + n2 + n3) / 3;
+
+    //Para modificar un texto usaremos la funcion setText
+    resultado.setText(promedio + "");
+
+    /*METODO CORTO DE PROCEDIMIENTO*/
+
+    /*n1= Double.parseDouble(caja1.getText().toString());
+    n2= Double.parseDouble(caja2.getText().toString());
+    n3= Double.parseDouble(caja3.getText().toString());
+
+    if (n1>=n2 && n1>=n3) promedio=((n1*2)+n2+n3)/3;
+    else if (n2>=n1 && n2>=n3) promedio=(n1+(n2*2)+n3)/3;
+    else promedio=(n1+n2+(n3*2))/3;
+
+    if(promedio>=12.5) resultado.setText("Usted aprobo con: "+promedio);
+    else resultado.setText("Usted desaprobo con: "+promedio);*/
+
+  }
+}
